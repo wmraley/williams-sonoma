@@ -10,4 +10,4 @@
 
 Java Project for SQA Boot Camp Program. 
 
-[Mike Raley](http://sqasolution.com)
+[Mike Raley](https://github.com/wmraley)
