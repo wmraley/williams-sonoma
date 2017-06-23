@@ -85,6 +85,37 @@ public class AppBasics {
 		return input.charAt(0);
 	}
 
+	// Overloaded version of Request Char
+	public static char requestChar(String question, String charErrorResponse, char... possibleChars) {
+		boolean isInvalid = true;
+		String input = "";
+		Boolean validChar = false;
+		while (isInvalid) {
+			System.out.println(question + " ");
+			input = scanner.nextLine();
+			try {
+				if (input.length() != 1) {
+					throw new InvalidCharResponseLength();
+				}
+				for (char c : possibleChars) {
+					if (Character.toUpperCase(c) == input.toUpperCase().charAt(0)) {
+						validChar = true;
+					}
+				}
+				if (!validChar) {
+					throw new CharNotValidException();
+				}
+				isInvalid = false;
+			} catch (InvalidCharResponseLength e) {
+				// TODO Auto-generated catch block
+				System.out.println("You must enter one character [" + input + "]");
+			} catch (CharNotValidException e) {
+				System.out.println(charErrorResponse + " [" + input + "]");
+			}
+		}
+		return input.charAt(0);
+	}
+
 	public static double requestDouble(String question) {
 		double value = 0;
 		boolean isInvalid = true;
@@ -120,6 +151,17 @@ public class AppBasics {
 	}
 
 	public static int requestInt(String question) {
+		return requestIntWithinRange(question, 0, 0, "");
+	}
+
+	/**
+	 * @param string
+	 * @param i
+	 * @param j
+	 * @param string2
+	 * @return
+	 */
+	public static int requestIntWithinRange(String question, int min, int max, String rangeErrorResponse) {
 		int value = 0;
 		boolean isInvalid = true;
 		while (isInvalid) {
@@ -127,11 +169,21 @@ public class AppBasics {
 			String input = scanner.nextLine();
 			try {
 				value = Integer.parseInt(input.trim());
+				if (min != 0 && max != 0) {
+					if (value < min) {
+						throw new UnderMinException();
+					}
+					if (value > max) {
+						throw new OverMaxException();
+					}
+				}
 				isInvalid = false;
 			} catch (NumberFormatException e) {
-				System.out.println("YOu have not entered a correct formatted number [" + input + "]");
-				// TODO: handle exception
+				System.out.println("You have not entered a correct formatted number [" + input + "]");
+			} catch (OutOfRangeException e) {
+				System.out.println(rangeErrorResponse + " " + " [" + input + "]");
 			}
+			// TODO: handle exception
 		}
 		return value;
 	}
@@ -164,7 +216,6 @@ public class AppBasics {
 				isInvalid = false;
 			} catch (NumberFormatException e) {
 				System.out.println("You have not entered a correct decimal formatted number [" + input + "]");
-				// TODO: handle exception
 			}
 		}
 		return value;
