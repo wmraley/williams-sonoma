@@ -43,8 +43,27 @@ public class AppBasics {
 	}
 
 	public static boolean requestBoolean(String question) {
-		System.out.println(question);
-		return false;
+		boolean isInvalid = true;
+		boolean response = false;
+		String input = "";
+		while (isInvalid) {
+			System.out.print(question + " (Yes/No): ");
+			input = scanner.nextLine();
+			try {
+				if (input.equalsIgnoreCase("yes")) {
+					isInvalid = false;
+					response = true;
+				} else if (input.equalsIgnoreCase("no")) {
+					isInvalid = false;
+					response = false;
+				} else {
+					throw new InvalidBooleanResponse();
+				}
+			} catch (InvalidBooleanResponse e) {
+				System.out.println("You have an incorrect response (Yes/No) [" + input + "]");
+			}
+		}
+		return response;
 	}
 
 	public static char requestChar(String question) {
@@ -118,13 +137,37 @@ public class AppBasics {
 	}
 
 	public static long requestLong(String question) {
-		System.out.println(question);
-		return 0;
+		long value = 0;
+		boolean isInvalid = true;
+		while (isInvalid) {
+			System.out.print(question + " ");
+			String input = scanner.nextLine();
+			try {
+				value = Long.parseLong(input.trim());
+				isInvalid = false;
+			} catch (NumberFormatException e) {
+				System.out.println("YOu have not entered a correct decimal formatted number [" + input + "]");
+				// TODO: handle exception
+			}
+		}
+		return value;
 	}
 
 	public static short requestShort(String question) {
-		System.out.println(question);
-		return 0;
+		short value = 0;
+		boolean isInvalid = true;
+		while (isInvalid) {
+			System.out.print(question + " ");
+			String input = scanner.nextLine();
+			try {
+				value = Short.parseShort(input.trim());
+				isInvalid = false;
+			} catch (NumberFormatException e) {
+				System.out.println("You have not entered a correct decimal formatted number [" + input + "]");
+				// TODO: handle exception
+			}
+		}
+		return value;
 	}
 
 	public static String requestString(String question) {
