@@ -1,18 +1,18 @@
 /**
- *   File Name: CharNotValidException.java<br>
+ *   File Name: CharacterCountFormatException.java<br>
  *
  *   Raley, Mike<br>
  *   Java Boot Camp Exercise<br>
  *   Instructor: Jean-francois Nepton<br>
- *   Created: Jun 22, 2017
+ *   Created: Jul 1, 2017
  *   
  */
 
-package com.sqa.mr.helpers;
+package com.sqa.mr.helpers.exceptions;
 
 
 /**
- * CharNotValidException //ADDD (description of class)
+ * CharacterCountFormatException //ADDD (description of class)
  * <p>
  * //ADDD (description of core fields)
  * <p>
@@ -23,5 +23,5 @@ package com.sqa.mr.helpers;
  * @since       1.0
  *
  */
-public class CharNotValidException extends Exception {
+public class CharacterCountFormatException extends Exception {
 }

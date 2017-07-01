@@ -10,6 +10,7 @@ package com.sqa.mr.helpers;
 import java.util.*;
 
 import com.sqa.mr.helpers.exceptions.*;
+import com.sqa.mr.helpers.exceptions.CharNotValidException;
 
 /**
  * AppBasics //ADDD (description of class)
