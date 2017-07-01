@@ -29,6 +29,10 @@ public class Core {
 
 	private WebDriver driver;
 
+	private int screenshotCount = 1;
+
+	protected String testingName = "Auto Test";
+
 	/**
 	 * @param baseURL
 	 * @param driver
@@ -56,5 +60,26 @@ public class Core {
 
 	public boolean isPresent(By by) {
 		return AutoBasics.isElementPresent(getDriver(), by, getLog());
+	}
+
+	public boolean takeScreenshot() {
+		boolean tookScreenshot = AutoBasics.takeScreenshot("screenshots", this.testingName + this.screenshotCount,
+				getDriver(), getLog());
+		if (tookScreenshot) {
+			this.screenshotCount++;
+		}
+		return tookScreenshot;
+	}
+
+	public boolean takeScreenshot(String fileName) {
+		return AutoBasics.takeScreenshot("screenshots", fileName, getDriver(), getLog());
+	}
+
+	/**
+	 * @param driver
+	 *            the driver to set
+	 */
+	protected void setDriver(WebDriver driver) {
+		this.driver = driver;
 	}
 }
