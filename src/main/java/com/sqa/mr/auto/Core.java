@@ -10,6 +10,8 @@ package com.sqa.mr.auto;
 import org.apache.log4j.*;
 import org.openqa.selenium.*;
 
+import com.sqa.mr.adactin.*;
+
 /**
  * Core //ADDD (description of class)
  * <p>
@@ -32,6 +34,15 @@ public class Core {
 	private int screenshotCount = 1;
 
 	protected String testingName = "Auto Test";
+
+	private BasicTest relTest;
+
+	public Core(BasicTest test) {
+		super();
+		this.baseURL = test.getBaseURL();
+		this.driver = test.getDriver();
+		this.setRelTest(test);
+	}
 
 	/**
 	 * @param baseURL
@@ -58,8 +69,23 @@ public class Core {
 		return this.log;
 	}
 
+	/**
+	 * @return the relTest
+	 */
+	public BasicTest getRelTest() {
+		return this.relTest;
+	}
+
 	public boolean isPresent(By by) {
 		return AutoBasics.isElementPresent(getDriver(), by, getLog());
+	}
+
+	/**
+	 * @param relTest
+	 *            the relTest to set
+	 */
+	public void setRelTest(BasicTest relTest) {
+		this.relTest = relTest;
 	}
 
 	public boolean takeScreenshot() {

@@ -1,4 +1,4 @@
-package com.sqa.mr.adactin;
+package com.sqa.mr.auto;
 
 import java.util.concurrent.*;
 
@@ -6,8 +6,6 @@ import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.ie.*;
 import org.testng.annotations.*;
-
-import com.sqa.mr.auto.*;
 
 public class BasicTest extends Core {
 
@@ -30,7 +28,7 @@ public class BasicTest extends Core {
 
 	@BeforeClass(enabled = true)
 	public void setUpFirefox() throws Exception {
-		// Setup the driver to use IE
+		// Setup the driver to use Firefox
 		setDriver(new FirefoxDriver());
 		// Set an implicit wait of up to 30 seconds
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
