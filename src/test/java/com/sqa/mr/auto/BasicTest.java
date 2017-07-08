@@ -50,6 +50,11 @@ public class BasicTest extends Core {
 		getDriver().get(getBaseURL());
 	}
 
+	@BeforeMethod()
+	public void setupTest() {
+		getDriver().get(getBaseURL());
+	}
+
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
 		// quit closes all instances of the browser.
