@@ -7,9 +7,6 @@
  */
 package com.sqa.mr.auto;
 
-import com.sqa.mr.adactin.*;
-import com.sqa.mr.auto.*;
-
 /**
  * AbstractLoginTest //ADDD (description of class)
  * <p>
